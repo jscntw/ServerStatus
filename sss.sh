@@ -23,7 +23,8 @@ pre_check() {
     [[ $EUID -ne 0 ]] && echo -e "${red}错误: ${plain} 必须使用root用户运行此脚本！\n" && exit 1
 }
 
-modify_bot_config(){
+# 修改 bot 配置
+modify_bot_config() {
     if [[ $# < 2 ]]; then
         echo -e "${red}参数错误，未能正确提供tg bot信息，请手动修改compose.yaml中的bot信息 ${plain}"
         exit 1
@@ -34,18 +35,26 @@ modify_bot_config(){
     sed -i "s/tg_bot_token/${tg_bot_token}/" compose.yaml
 }
 
-install_dashboard(){
+# 启动面板，不需要安装Docker
+install_dashboard() {
     echo -e "> 启动面板"
+    
     # 修改 bot 配置
     modify_bot_config "$@"
+    
     # 启动面板（假设 Docker 已经安装并配置好）
-    (docker-compose up -d) >/dev/null 2>&1
+    echo -e "> 启动 ServerStatus"
+    
+    # 启动 Docker Compose，确保只启动 ServerStatus 容器
+    (docker-compose up -d ServerStatus) >/dev/null 2>&1
 }
 
-nodes_mgr(){
+# 管理节点（保持原有逻辑）
+nodes_mgr() {
     python3 _sss.py
 }
 
+# 预检查并执行安装
 pre_check
 install_dashboard "$@"
 nodes_mgr
