@@ -1,6 +1,6 @@
 FROM python:alpine
 
-LABEL maintainer="lidalao"
+LABEL maintainer="jscntw"
 LABEL version="0.0.1"
 LABEL description="Telegram Bot for ServerStatus"
 
