@@ -76,7 +76,7 @@ install_docker() {
 
 modify_bot_config(){
     if [[ $# < 2 ]]; then
-        echo -e "${red}参数错误，未能正确提供tg bot信息，请手动修改docker-compse.yml中的bot信息 ${plain}"
+        echo -e "${red}参数错误，未能正确提供tg bot信息，请手动修改compose.yaml中的bot信息 ${plain}"
         exit 1
     fi
     
@@ -97,7 +97,7 @@ install_dashboard(){
 
     echo -e "> 安装面板"
     
-    wget --no-check-certificate ${GITHUB_RAW_URL}/docker-compose.yml >/dev/null 2>&1
+    wget --no-check-certificate ${GITHUB_RAW_URL}/compose.yaml >/dev/null 2>&1
     wget --no-check-certificate ${GITHUB_RAW_URL}/Dockerfile >/dev/null 2>&1
     wget --no-check-certificate ${GITHUB_RAW_URL}/bot.py >/dev/null 2>&1
     wget --no-check-certificate ${GITHUB_RAW_URL}/_sss.py >/dev/null 2>&1
