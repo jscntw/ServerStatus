@@ -1,5 +1,4 @@
 #!/bin/bash
-
 #========================================================
 #   System Required: CentOS 7+ / Debian 8+ / Ubuntu 16+ /
 #     Arch 未测试
@@ -8,7 +7,6 @@
 #========================================================
 
 GITHUB_RAW_URL="https://raw.githubusercontent.com/jscntw/ServerStatus/master"
-
 red='\033[0;31m'
 green='\033[0;32m'
 yellow='\033[0;33m'
@@ -21,27 +19,25 @@ pre_check() {
         echo "不支持此系统：未找到 systemctl 命令"
         exit 1
     fi
-
     # check root
     [[ $EUID -ne 0 ]] && echo -e "${red}错误: ${plain} 必须使用root用户运行此脚本！\n" && exit 1
 }
 
 install_soft() {
-    (command -v yum >/dev/null 2>&1 && yum install $* -y) ||
-    (command -v apt >/dev/null 2>&1 && apt install $* -y) ||
-    (command -v pacman >/dev/null 2>&1 && pacman -Syu $*) ||
-    (command -v apt-get >/dev/null 2>&1 &&  apt-get install $* -y)
-
+    (command -v yum >/dev/null 2>&1 && yum install $* -y) || \
+    (command -v apt >/dev/null 2>&1 && apt install $* -y) || \
+    (command -v pacman >/dev/null 2>&1 && pacman -Syu $*) || \
+    (command -v apt-get >/dev/null 2>&1 && apt-get install $* -y)
     if [[ $? != 0 ]]; then
         echo -e "${red}安装基础软件失败，稍等会${plain}"
         exit 1
     fi
-
-    (command -v pip3 >/dev/null 2>&1 &&  pip3 install requests)
+    (command -v pip3 >/dev/null 2>&1 && pip3 install requests)
 }
 
 install_base() {
-    (command -v curl >/dev/null 2>&1 && command -v wget >/dev/null 2>&1 && command -v pip3 >/dev/null 2>&1) || install_soft curl wget python3-pip python3
+    (command -v curl >/dev/null 2>&1 && command -v wget >/dev/null 2>&1 && command -v pip3 >/dev/null 2>&1) || \
+    install_soft curl wget python3-pip python3
 }
 
 install_docker() {
@@ -59,7 +55,6 @@ install_docker() {
         systemctl start docker.service
         echo -e "${green}Docker${plain} 安装成功"
     fi
-
     command -v docker-compose >/dev/null 2>&1
     if [[ $? != 0 ]]; then
         echo -e "正在安装 Docker Compose"
@@ -73,46 +68,38 @@ install_docker() {
     fi
 }
 
-
-modify_bot_config(){
+modify_bot_config() {
     if [[ $# < 2 ]]; then
         echo -e "${red}参数错误，未能正确提供tg bot信息，请手动修改compose.yaml中的bot信息 ${plain}"
         exit 1
     fi
-    
     tg_chat_id=$1
     tg_bot_token=$2
-
     sed -i "s/tg_chat_id/${tg_chat_id}/" compose.yaml
     sed -i "s/tg_bot_token/${tg_bot_token}/" compose.yaml
 }
 
-install_dashboard(){ 
-    
+install_dashboard() {
     install_docker
-
-    if [  "$(docker ps -q -f name=bot4sss)" ]; then
+    if [ "$(docker ps -q -f name=bot4sss)" ]; then
         return 0
     fi
-
     echo -e "> 安装面板"
-    
-    wget --no-check-certificate ${GITHUB_RAW_URL}/compose.yaml >/dev/null 2>&1
-    wget --no-check-certificate ${GITHUB_RAW_URL}/Dockerfile >/dev/null 2>&1
-    wget --no-check-certificate ${GITHUB_RAW_URL}/bot.py >/dev/null 2>&1
-    wget --no-check-certificate ${GITHUB_RAW_URL}/_sss.py >/dev/null 2>&1
-    echo '{"servers":[]}' > config.json
-    
-    modify_bot_config "$@"
+    # 这些文件已经下载好了，所以不需要再 wget
+    # wget --no-check-certificate ${GITHUB_RAW_URL}/compose.yaml >/dev/null 2>&1
+    # wget --no-check-certificate ${GITHUB_RAW_URL}/Dockerfile >/dev/null 2>&1
+    # wget --no-check-certificate ${GITHUB_RAW_URL}/bot.py >/dev/null 2>&1
+    # wget --no-check-certificate ${GITHUB_RAW_URL}/_sss.py >/dev/null 2>&1
 
+    echo '{"servers":[]}' > config.json
+    modify_bot_config "$@"
     echo -e "> 启动面板"
-    (docker-compose up -d)  >/dev/null 2>&1
+    (docker-compose up -d) >/dev/null 2>&1
 }
 
-nodes_mgr(){
+nodes_mgr() {
     python3 _sss.py
 }
-
 
 pre_check
 install_dashboard "$@"
