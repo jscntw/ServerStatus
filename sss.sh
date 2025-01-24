@@ -83,8 +83,8 @@ modify_bot_config(){
     tg_chat_id=$1
     tg_bot_token=$2
 
-    sed -i "s/tg_chat_id/${tg_chat_id}/" docker-compose.yml
-    sed -i "s/tg_bot_token/${tg_bot_token}/" docker-compose.yml
+    sed -i "s/tg_chat_id/${tg_chat_id}/" compose.yaml
+    sed -i "s/tg_bot_token/${tg_bot_token}/" compose.yaml
 }
 
 install_dashboard(){ 
