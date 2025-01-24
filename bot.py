@@ -10,7 +10,7 @@ import requests
 import time
 import traceback
 
-NODE_STATUS_URL = 'http://sss/json/stats.json'
+NODE_STATUS_URL = 'http://tzjk.jscn.net/json/stats.json'
 
 offs = []
 counterOff = {}
