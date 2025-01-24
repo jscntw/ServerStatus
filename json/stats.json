@@ -1,0 +1,26 @@
+{
+"servers": [
+{ "name": "cc11amd", "type": "kvm", "host": "cc11amd", "location": "kr", "online4": false, "online6": false, "last_network_in": 55816404942, "last_network_out": 40424407103 },
+{ "name": "cc11arm", "type": "kvm", "host": "cc11arm", "location": "kr", "online4": false, "online6": false, "last_network_in": 55281651574, "last_network_out": 40551676724 },
+{ "name": "cc22amd", "type": "kvm", "host": "cc22amd", "location": "kr", "online4": false, "online6": false, "last_network_in": 3617255, "last_network_out": 41668944 },
+{ "name": "cc22arm", "type": "kvm", "host": "cc22arm", "location": "kr", "online4": false, "online6": false, "last_network_in": 55078514044, "last_network_out": 40180875797 },
+{ "name": "claw7jp", "type": "kvm", "host": "dmit369", "location": "jp", "online4": false, "online6": false, "last_network_in": 0, "last_network_out": 0 },
+{ "name": "dj1amd", "type": "kvm", "host": "dj1amd", "location": "jp", "online4": false, "online6": false, "last_network_in": 956850847840, "last_network_out": 932688799334 },
+{ "name": "dj1arm", "type": "kvm", "host": "dj1arm", "location": "jp", "online4": false, "online6": false, "last_network_in": 8659226439, "last_network_out": 11269264379 },
+{ "name": "dj2amd", "type": "kvm", "host": "dj2amd", "location": "jp", "online4": false, "online6": false, "last_network_in": 46667977911, "last_network_out": 37932197196 },
+{ "name": "dj2arm", "type": "kvm", "host": "dj2arm", "location": "jp", "online4": false, "online6": false, "last_network_in": 8904548637, "last_network_out": 11400790288 },
+{ "name": "fhc1amd", "type": "kvm", "host": "fhc1amd", "location": "us", "online4": false, "online6": false, "last_network_in": 153035874574, "last_network_out": 131611462121 },
+{ "name": "fhc1arm", "type": "kvm", "host": "fhc1arm", "location": "us", "online4": false, "online6": false, "last_network_in": 31329312563, "last_network_out": 26989069318 },
+{ "name": "fhc2amd", "type": "kvm", "host": "fhc2amd", "location": "us", "online4": false, "online6": false, "last_network_in": 5675422291657, "last_network_out": 5662935067796 },
+{ "name": "fhc2arm", "type": "kvm", "host": "fhc2arm", "location": "us", "online4": false, "online6": false, "last_network_in": 125943222462, "last_network_out": 125059041522 },
+{ "name": "sg1amd", "type": "kvm", "host": "sg1amd", "location": "sg", "online4": false, "online6": false, "last_network_in": 82561249401, "last_network_out": 65496311998 },
+{ "name": "sg1arm", "type": "kvm", "host": "sg1arm", "location": "sg", "online4": false, "online6": false, "last_network_in": 78883, "last_network_out": 48350 },
+{ "name": "sg2amd", "type": "kvm", "host": "sg2amd", "location": "sg", "online4": false, "online6": false, "last_network_in": 85337226920, "last_network_out": 84111202074 },
+{ "name": "sg2arm", "type": "kvm", "host": "sg2arm", "location": "sg", "online4": false, "online6": false, "last_network_in": 13002783828, "last_network_out": 12456137458 },
+{ "name": "sr1amd", "type": "kvm", "host": "sr1amd", "location": "kr", "online4": false, "online6": false, "last_network_in": 244647959665, "last_network_out": 234344432893 },
+{ "name": "sr1arm", "type": "kvm", "host": "sr1arm", "location": "kr", "online4": false, "online6": false, "last_network_in": 1232705668532, "last_network_out": 1985124532997 },
+{ "name": "sr2amd", "type": "kvm", "host": "sr2amd", "location": "kr", "online4": false, "online6": false, "last_network_in": 328327554318, "last_network_out": 309350922439 },
+{ "name": "sr2arm", "type": "kvm", "host": "sr2arm", "location": "kr", "online4": false, "online6": false, "last_network_in": 339923366746, "last_network_out": 331734605995 }
+],
+"updated": "1737719892"
+}
