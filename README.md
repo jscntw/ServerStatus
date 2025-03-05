@@ -5,9 +5,6 @@
 - 上下线通知（telegram）
 - Agent机器安装脚本改为systemd， 支持开机自启
 
->由于未改动cppla版的任何代码，所以，我愿意把这个项目称为ServerStatus的小插件, 理论上它可以为任何版本的ServerStatus服务
-
-
 # 安装
 在**服务端**复制以下命令，一键到底。请记得替换成你自己的YOUR_TG_CHAT_ID和YOUR_TG_BOT_TOKEN。
 
