@@ -75,29 +75,29 @@ install_docker() {
 
 modify_bot_config(){
     if [[ $# < 2 ]]; then
-        echo -e "${red}参数错误，未能正确提供tg bot信息，请手动修改docker-compose.yml中的bot信息 ${plain}"
+        echo -e "${red}参数错误，未能正确提供tg bot信息，请手动修改compose.yaml中的bot信息 ${plain}"
         exit 1
     fi
     
     tg_chat_id=$1
     tg_bot_token=$2
 
-    sed -i "s/tg_chat_id/${tg_chat_id}/" docker-compose.yml
-    sed -i "s/tg_bot_token/${tg_bot_token}/" docker-compose.yml
+    sed -i "s/tg_chat_id/${tg_chat_id}/" compose.yaml
+    sed -i "s/tg_bot_token/${tg_bot_token}/" compose.yaml
 }
 
 install_dashboard(){ 
     
     install_docker
 
-    if [  "$(docker ps -q -f name=bot4sss)" ]; then
+    if [  "$(docker ps -q -f name=serverstatus-bot4sss)" ]; then
         return 0
     fi
 
     echo -e "> 安装面板"
 
     # 使用新的 GitHub 仓库地址
-    wget --no-check-certificate ${GITHUB_RAW_URL}/docker-compose.yml >/dev/null 2>&1
+    wget --no-check-certificate ${GITHUB_RAW_URL}/compose.yaml >/dev/null 2>&1
     wget --no-check-certificate ${GITHUB_RAW_URL}/Dockerfile >/dev/null 2>&1
     wget --no-check-certificate ${GITHUB_RAW_URL}/bot.py >/dev/null 2>&1
     wget --no-check-certificate ${GITHUB_RAW_URL}/_sss.py >/dev/null 2>&1
