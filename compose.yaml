@@ -8,7 +8,7 @@ services:
       - ./json:/usr/share/nginx/html/json
     ports:
       - 35601:35601
-      - 8081:80 
+      - 35602:80 
   bot:
     image: serverstatus-bot4sss  # 使用已经手动构建的镜像
     container_name: serverstatus-bot4sss
