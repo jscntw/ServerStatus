@@ -74,6 +74,12 @@ install_docker() {
 }
 
 modify_bot_config(){
+    # 检查 compose.yaml 是否已经包含 bot 信息
+    if grep -q 'tg_chat_id' compose.yaml && grep -q 'tg_bot_token' compose.yaml; then
+        echo -e "${green}Telegram bot 配置信息已存在，跳过配置${plain}"
+        return 0
+    fi
+
     if [[ $# < 2 ]]; then
         echo -e "${red}参数错误，未能正确提供tg bot信息，请手动修改compose.yaml中的bot信息 ${plain}"
         exit 1
