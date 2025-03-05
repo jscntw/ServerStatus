@@ -36,6 +36,14 @@ chmod +x ./sss.sh && sudo ./sss.sh YOUR_TG_CHAT_ID YOUR_TG_BOT_TOKEN
 mkdir -p /opt/stacks/ServerStatus && cd /opt/stacks/ServerStatus && wget --no-check-certificate https://raw.githubusercontent.com/jscntw/ServerStatus/master/sss.sh && chmod +x ./sss.sh && sudo ./sss.sh YOUR_TG_CHAT_ID YOUR_TG_BOT_TOKEN
 
 ```
+```
+sudo ./sss.sh
+
+```
+```
+python3 ./_sss.py
+
+```
 安装成功后，web服务地址：http://ip:8081
 
 更多信息请移步 https://lidalao.com/archives/87  +1ip
