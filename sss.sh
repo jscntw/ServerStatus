@@ -4,10 +4,10 @@
 #   System Required: CentOS 7+ / Debian 8+ / Ubuntu 16+ /
 #     Arch 未测试
 #   Description: Server Status 监控安装脚本
-#   Github: https://github.com/lidalao/ServerStatus
+#   Github: https://github.com/jscntw/ServerStatus.git
 #========================================================
 
-GITHUB_RAW_URL="https://raw.githubusercontent.com/lidalao/ServerStatus/master"
+GITHUB_RAW_URL="https://raw.githubusercontent.com/jscntw/ServerStatus/master"
 
 red='\033[0;31m'
 green='\033[0;32m'
@@ -33,7 +33,7 @@ install_soft() {
     (command -v apt-get >/dev/null 2>&1 &&  apt-get install $* -y)
 
     if [[ $? != 0 ]]; then
-        echo -e "${red}安装基础软件失败，稍等会${plain}"
+        echo -e "${red}安装基础软件失败，请稍等${plain}"
         exit 1
     fi
 
@@ -73,10 +73,9 @@ install_docker() {
     fi
 }
 
-
 modify_bot_config(){
     if [[ $# < 2 ]]; then
-        echo -e "${red}参数错误，未能正确提供tg bot信息，请手动修改docker-compse.yml中的bot信息 ${plain}"
+        echo -e "${red}参数错误，未能正确提供tg bot信息，请手动修改docker-compose.yml中的bot信息 ${plain}"
         exit 1
     fi
     
@@ -96,13 +95,14 @@ install_dashboard(){
     fi
 
     echo -e "> 安装面板"
-    
+
+    # 使用新的 GitHub 仓库地址
     wget --no-check-certificate ${GITHUB_RAW_URL}/docker-compose.yml >/dev/null 2>&1
     wget --no-check-certificate ${GITHUB_RAW_URL}/Dockerfile >/dev/null 2>&1
     wget --no-check-certificate ${GITHUB_RAW_URL}/bot.py >/dev/null 2>&1
     wget --no-check-certificate ${GITHUB_RAW_URL}/_sss.py >/dev/null 2>&1
     echo '{"servers":[]}' > config.json
-    
+
     modify_bot_config "$@"
 
     echo -e "> 启动面板"
@@ -112,7 +112,6 @@ install_dashboard(){
 nodes_mgr(){
     python3 _sss.py
 }
-
 
 pre_check
 install_dashboard "$@"
