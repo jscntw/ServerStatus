@@ -1,4 +1,4 @@
-FROM python:3.9-alpine
+FROM nyurik/alpine-python3-requests
 
 LABEL maintainer="lidalao"
 LABEL version="0.0.1"
