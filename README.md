@@ -17,7 +17,7 @@ cd /opt/stacks
 
 ```
 ```
-git clone https://github.com/jscntw/ServerStatus.git
+git clone https://github.com/jscntw/serverstatus.git
 
 ```
 ```
